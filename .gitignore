@@ -1,0 +1,17 @@
+# Byte-compiled / intermediate files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+
+# Data
+data/raw/
+data/processed/
+
+# Machine Learning Model
+app/ml/model.pkl
+
+# Environment Variables
+.env
