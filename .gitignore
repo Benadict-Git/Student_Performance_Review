@@ -3,11 +3,3 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Virtual environment
-venv/
-
-# Machine Learning Model
-app/ml/model.pkl
-
-# Environment Variables
-.env
