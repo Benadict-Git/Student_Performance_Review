@@ -6,10 +6,6 @@ __pycache__/
 # Virtual environment
 venv/
 
-# Data
-data/raw/
-data/processed/
-
 # Machine Learning Model
 app/ml/model.pkl
 
