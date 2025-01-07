@@ -31,4 +31,16 @@ def train_model(data_path: str):
 def predict_performance(features: list):
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
-    return model.predict([features])[0]
+    prediction = model.predict([features])[0]
+    
+    # Debugging line to check the raw prediction value (should be 0, 1, or 2)
+    print("Predicted raw value:", prediction)
+    
+    performance_map = {0: "Below Average", 1: "Average", 2: "Above Average"}
+    return performance_map[prediction]
+
+
+
+'''features = [85.0, 95.0, 90.0]  # Benny's scores
+prediction = predict_performance(features)
+print(prediction)'''
