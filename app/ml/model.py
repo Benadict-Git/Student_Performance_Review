@@ -16,6 +16,7 @@ def train_model(data_path: str):
     le = LabelEncoder()
     y = le.fit_transform(y)
 
+    print(y)
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -32,7 +33,7 @@ def predict_performance(features: list):
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
     prediction = model.predict([features])[0]
-    
+
     # Debugging line to check the raw prediction value (should be 0, 1, or 2)
     print("Predicted raw value:", prediction)
     
@@ -41,6 +42,6 @@ def predict_performance(features: list):
 
 
 
-'''features = [85.0, 95.0, 90.0]  # Benny's scores
+features = [85.0, 95.0, 90.0]  # Benny's scores
 prediction = predict_performance(features)
-print(prediction)'''
+print(prediction)
