@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.schemas import StudentSchema, PredictionSchema
 from database.connection import get_db
-from app.ml.model import predict_performance
+from app.ml.models import predict_performance
 
 router = APIRouter()
 
