@@ -3,17 +3,6 @@ from app.main import app
 
 client = TestClient(app)
 
-'''def test_root():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to the Student Performance Reviewer API"}
-
-
-from fastapi.testclient import TestClient
-from app.main import app  # Import your FastAPI app
-
-client = TestClient(app)  # Initialize the test client'''
-
 def test_predict_student_performance():
     response = client.post("/predict/", json={
         "student_id": "0022",
