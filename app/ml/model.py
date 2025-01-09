@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-import pickle
+import pickle, logging
 
 MODEL_PATH = "app/ml/model.pkl"
 
@@ -16,7 +16,6 @@ def train_model(data_path: str):
     le = LabelEncoder()
     y = le.fit_transform(y)
 
-    print(y)
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -29,19 +28,13 @@ def train_model(data_path: str):
         pickle.dump(model, f)
     print("Model trained and saved.")
 
-def predict_performance(features: list):
+def predict_performance(features: list) -> str:
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
     prediction = model.predict([features])[0]
 
-    # Debugging line to check the raw prediction value (should be 0, 1, or 2)
-    print("Predicted raw value:", prediction)
-    
+    # Map raw prediction to performance string
     performance_map = {0: "Below Average", 1: "Average", 2: "Above Average"}
-    return performance_map[prediction]
+    return performance_map[prediction]  # Return the mapped string directly
 
 
-
-features = [85.0, 95.0, 90.0]  # Benny's scores
-prediction = predict_performance(features)
-print(prediction)

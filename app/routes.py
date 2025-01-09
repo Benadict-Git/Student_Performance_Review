@@ -17,28 +17,12 @@ def get_students():
     students = list(db.students.find({}, {"_id": 0}))
     return students
 
-@router.post("/predict/")
-def predict_student_performance(student: StudentSchema):
-    features = [student.math_score, student.reading_score, student.writing_score]
-    prediction = predict_performance(features)
-    performance_map = {0: "Below Average", 1: "Average", 2: "Above Average"}
-
-    return PredictionSchema(
-        student_id=student.student_id,
-        predicted_performance=performance_map[prediction]
-    )
-
-from fastapi import APIRouter
-from app.schemas import PredictionSchema
-
 @router.post("/predict/", response_model=PredictionSchema)
 def predict_student_performance(student: StudentSchema):
     features = [student.math_score, student.reading_score, student.writing_score]
-    prediction = predict_performance(features)
-    performance_map = {0: "Below Average", 1: "Average", 2: "Above Average"}
+    performance = predict_performance(features)  # Already returns a string
 
     return PredictionSchema(
         student_id=student.student_id,
-        predicted_performance=performance_map[prediction]
+        predicted_performance=performance
     )
-
