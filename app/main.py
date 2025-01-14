@@ -5,6 +5,6 @@ app = FastAPI(title="Student Performance Reviewer")
 
 app.include_router(router)
 
-@app.get("/")
+@app.get("/")           # For testing purpose
 def root():
     return {"message": "Welcome to the Student Performance Reviewer API"}
