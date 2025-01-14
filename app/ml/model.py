@@ -35,6 +35,6 @@ def predict_performance(features: list) -> str:
 
     # Map raw prediction to performance string
     performance_map = {0: "Below Average", 1: "Average", 2: "Above Average"}
-    return performance_map[prediction]  # Return the mapped string directly
+    return performance_map[prediction]  
 
 
