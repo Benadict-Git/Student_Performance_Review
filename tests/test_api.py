@@ -4,6 +4,7 @@ from app.main import app
 client = TestClient(app)
 
 def test_predict_student_performance():
+    # Sample JSON response 
     response = client.post("/predict/", json={
         "student_id": "0022",
         "name": "Benny",
