@@ -8,7 +8,7 @@ class StudentSchema(BaseModel):
     reading_score: int
     writing_score: int
 
-    class Config:
+    class Config:                   # attribute-based parsing
         from_attributes = True
 
 class PredictionSchema(BaseModel):
