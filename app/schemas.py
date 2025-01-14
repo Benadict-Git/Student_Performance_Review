@@ -9,7 +9,7 @@ class StudentSchema(BaseModel):
     writing_score: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PredictionSchema(BaseModel):
     student_id: str
